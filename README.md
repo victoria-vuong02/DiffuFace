@@ -25,11 +25,6 @@ Built on SDXL with custom-trained style LoRAs + IP-Adapter-FaceID for identity p
 
 ## Setup
 
-### Conda environment
-```bash
-conda activate PTorch
-```
-
 ### Backend dependencies
 ```bash
 cd backend
