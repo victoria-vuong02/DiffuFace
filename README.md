@@ -1,4 +1,5 @@
-# DiffuFace — Multi-Style Identity-Preserving Face Stylization
+# DiffuFace — Face Generator
+<img width="572" height="1024" alt="Main_img" src="https://github.com/user-attachments/assets/efc4c1cc-fd66-4331-af85-b9108bf9d6cb" />
 
 Upload a face photo. DiffuFace does two things:
 1. **Stylize it** — turn it into anime, watercolor, claymation, pixel art, or oil painting while keeping it recognizably *you* (same face shape, expression, pose)
