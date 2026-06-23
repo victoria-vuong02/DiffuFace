@@ -6,8 +6,6 @@ Upload a face photo. DiffuFace does two things:
 
 Built on SDXL with custom-trained style LoRAs + IP-Adapter-FaceID for identity preservation.
 
-> **License note:** IP-Adapter-FaceID and InsightFace are released for non-commercial research use only. This project is scoped as a portfolio and learning project under those terms.
-
 ---
 
 ## Setup
@@ -34,20 +32,6 @@ python notebooks/download_sdxl.py
 cd backend
 python notebooks/smoke_test.py
 # Generates test_output.png — confirms SDXL is running on Apple Silicon (MPS)
-```
-
-### Frontend *(Phase 6 — not yet built)*
-```bash
-cd frontend
-npm install
-npm run dev
-# Runs at: http://localhost:5173/
-```
-
-### Backend API *(Phase 6 — not yet built)*
-```bash
-cd backend
-uvicorn app:app --reload
 ```
 
 ---
@@ -88,7 +72,6 @@ Stylized output (identity preserved)
 - **IP-Adapter-FaceID** — face identity conditioning (keeps output looking like the input person)
 - **insightface** — face detection and identity embedding extraction
 - **ControlNet** *(optional)* — pose/angle consistency across styles
-- **FastAPI + Uvicorn** — backend REST API (Phase 6)
 
 ---
 
@@ -96,7 +79,7 @@ Stylized output (identity preserved)
 
 ```
 main/
-├── frontend/                          # Phase 6 — web UI (not yet built)
+├── frontend/
 │
 └── backend/
     ├── requirements.txt
@@ -111,8 +94,8 @@ main/
     │   ├── processed_styles/          # after resize, caption, dedup
     │   │   └── <style>/
     │   │       ├── images/
-    │   │       └── captions/          # one .txt caption file per image
-    │   └── test_faces/                # face photos used for evaluation
+    │   │       └── captions/
+    │   └── test_faces/
     │
     ├── preprocessing/
     │   ├── resize_and_crop.py         # standardize all training images to 1024×1024
@@ -123,13 +106,13 @@ main/
     ├── training/
     │   ├── configs/                   # one kohya_ss .toml config per style
     │   ├── train_lora.sh              # wrapper script that calls sd-scripts with a config
-    │   └── training_logs/             # loss curves and sample outputs per epoch
+    │   └── training_logs/
     │
     ├── models/
     │   ├── base/                      # SDXL base 1.0 (downloaded, not in git)
     │   ├── loras/                     # trained .safetensors LoRA files, one per style
     │   ├── ip_adapter/                # IP-Adapter-FaceID weights (downloaded)
-    │   └── controlnet/                # ControlNet weights (downloaded, optional)
+    │   └── controlnet/
     │
     ├── inference/
     │   ├── stylize.py                 # photo + style name → stylized output
@@ -141,7 +124,7 @@ main/
     │   ├── identity_similarity.py     # cosine similarity between input/output face embeddings
     │   ├── style_consistency_check.py # CLIP-based style fidelity scoring
     │   ├── compare_styles_grid.py     # side-by-side grid of all 5 styles for one face
-    │   └── eval_results/              # CSVs and visual grids (not in git)
+    │   └── eval_results/
     │
     └── notebooks/
         ├── download_sdxl.py           # one-time model download script
@@ -159,9 +142,7 @@ main/
 - [ ] Identity-preserving stylization — SDXL + LoRA + IP-Adapter-FaceID
 - [ ] Prompted region editing — mask-based inpainting with SDXL
 - [ ] Quantitative evaluation — face embedding similarity + style consistency scoring
-- [ ] Web UI — photo upload, style picker, region drawing tool
-- [ ] REST API — FastAPI backend for frontend integration
-- [ ] Deployment
+- [ ] Web UI + REST API deployment
 
 ---
 
@@ -178,9 +159,9 @@ Planned improvements that replace pretrained components with self-trained equiva
 
 ## Datasets
 
-| Dataset | Used for | License |
-|---|---|---|
-| WikiArt (~80k artworks) | Style LoRA training | Non-commercial research only |
-| CelebA (~200k face images) | Future: face identity encoder training | Non-commercial research only |
-| Synthetic SDXL-generated sets | Style LoRA training (no license concerns) | Self-generated |
-| Own face photos | Inference testing and evaluation | N/A |
+| Dataset | Used for |
+|---|---|
+| WikiArt (~80k artworks) | Style LoRA training |
+| CelebA (~200k face images) | Future: face identity encoder training |
+| Synthetic SDXL-generated sets | Style LoRA training |
+| Own face photos | Inference testing and evaluation |
