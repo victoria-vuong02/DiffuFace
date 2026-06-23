@@ -1,11 +1,25 @@
 # DiffuFace — Face Generator
+
+<table>
+<tr>
+<td width="40%" valign="top">
 <img width="572" height="1024" alt="Main_img" src="https://github.com/user-attachments/assets/efc4c1cc-fd66-4331-af85-b9108bf9d6cb" />
+</td>
+<td valign="top">
+
+### What it does
 
 Upload a face photo. DiffuFace does two things:
-1. **Stylize it** — turn it into anime, watercolor, claymation, pixel art, or oil painting while keeping it recognizably *you* (same face shape, expression, pose)
-2. **Edit a specific region** — draw over any area (hair, background, clothing), type what you want there, and only that region changes — everything else stays untouched
+
+**1. Stylize it** — turn it into anime, watercolor, claymation, pixel art, or oil painting while keeping it recognizably *you* (same face shape, expression, pose)
+
+**2. Edit a specific region** — draw over any area (hair, background, clothing), type what you want there, and only that region changes — everything else stays untouched
 
 Built on SDXL with custom-trained style LoRAs + IP-Adapter-FaceID for identity preservation.
+
+</td>
+</tr>
+</table>
 
 ---
 
