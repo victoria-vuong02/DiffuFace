@@ -1,0 +1,60 @@
+# ── Model weights ─────────────────────────────────────────────────────────────
+backend/models/base/
+backend/models/loras/
+backend/models/ip_adapter/
+backend/models/controlnet/
+
+# ── Training data ──────────────────────────────────────────────────────────────
+backend/data/raw_styles/
+backend/data/processed_styles/
+backend/data/test_faces/
+
+# ── Training outputs ───────────────────────────────────────────────────────────
+backend/training/training_logs/
+
+# ── Generated test images ──────────────────────────────────────────────────────
+backend/test_output.png
+backend/evaluation/eval_results/
+
+# ── Python cache ───────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# ── Jupyter ────────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ── Environment and secrets ────────────────────────────────────────────────────
+.env
+.env.*
+*.env
+secrets.json
+
+# ── Virtual environments ───────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+
+# ── macOS system files ─────────────────────────────────────────────────────────
+.DS_Store
+**/.DS_Store
+._*
+
+# ── Node / frontend ────────────────────────────────────────────────────────────
+frontend/node_modules/
+frontend/.next/
+frontend/dist/
+frontend/build/
+frontend/.env.local
+frontend/.env.production
+
+# ── Logs ───────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── Misc ───────────────────────────────────────────────────────────────────────
+*.tmp
+*.bak
+.cache/

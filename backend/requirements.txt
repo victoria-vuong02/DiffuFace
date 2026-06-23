@@ -1,0 +1,37 @@
+# ── Core ML stack ─────────────────────────────────────────────────────────────
+torch==2.12.0                  # PyTorch — use MPS backend on Apple Silicon
+diffusers==0.38.0              # Hugging Face diffusion pipeline (SDXL, inpainting, LoRA loading)
+transformers==5.12.1           # Text encoders (CLIP) used internally by diffusers
+accelerate==1.14.0             # Device management and mixed precision for diffusers + training
+safetensors==0.8.0             # Safe model weight file format (.safetensors)
+
+# ── Hugging Face utilities ─────────────────────────────────────────────────────
+huggingface_hub==1.20.1        # Model/dataset download manager (snapshot_download)
+datasets                       # Phase 1 — downloading WikiArt and other HF datasets
+
+# ── Face identity (Phase 3) ────────────────────────────────────────────────────
+insightface==1.0.1             # Face detection + identity embedding extraction
+onnxruntime==1.27.0            # Required by insightface internally
+
+# ── Image processing ───────────────────────────────────────────────────────────
+Pillow==11.3.0                 # Image open/save/resize (PNG, JPG)
+opencv-python-headless==4.12.0 # Face detection, masking, preprocessing (no GUI deps)
+
+# ── Numeric / scientific ───────────────────────────────────────────────────────
+numpy==2.3.3                   # Array operations used throughout
+scipy==1.16.3                  # Signal processing — used in mask feathering (Phase 4)
+
+# ── Utility ────────────────────────────────────────────────────────────────────
+tqdm==4.68.3                   # Progress bars
+requests==2.33.0               # HTTP — used by some HF utilities
+einops                         # Phase 3 — tensor reshaping used by IP-Adapter
+ftfy                           # Text cleaning for CLIP tokenizer inputs
+
+# ── Evaluation (Phase 5) ───────────────────────────────────────────────────────
+scikit-learn                   # Cosine similarity for face embedding comparison
+matplotlib                     # Generating style comparison grid images
+
+# ── Backend API (Phase 6 — frontend/backend deployment) ───────────────────────
+fastapi                        # REST API server for the backend
+uvicorn[standard]              # ASGI server to run FastAPI
+python-multipart               # Required by FastAPI to handle file uploads (face photo)
